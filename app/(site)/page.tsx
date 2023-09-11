@@ -1,4 +1,20 @@
-export default function Home() {
+import { PostPage } from '@/interfaces/post.interface';
+import { API } from '../api';
+import axios from 'axios';
+// async function getMenu() {
+// 	const res = await fetch(API.allPosts.getPost, {
+// 		method: 'GET',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 		},
+// 	});
+// 	return res.json;
+// }
+
+export default async function Home() {
+	const data = await axios.get<PostPage[]>(API.allPosts.getPost);
+
+	console.log(data);
 	return (
 		<main className='flex min-h-screen flex-col items-center justify-center p-24'>
 			<h1 className='text-4xl font-bold text-center pb-7'>Hello Next.js!</h1>
@@ -10,4 +26,7 @@ export default function Home() {
 			</button>
 		</main>
 	);
+}
+function getMenu() {
+	throw new Error('Function not implemented.');
 }
